@@ -31,7 +31,7 @@ public interface Vendor {
 	public final static Vendor InterbaseOrFirebird = new InterbaseOrFirebird();
 	public final static Vendor Oracle = new Oracle();
 	public final static Vendor SQLServer = new SQLServer();
-	public final static Vendor MSAccess = SQLServer; // TODO
+	public final static Vendor MSAccess = new MSAccess(); 
 	public final static Vendor Sybase = SQLServer; // TODO -- they are *mostly* identical
 	public final static Vendor HSQLDB = new HSQLDB();
 

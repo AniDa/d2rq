@@ -243,6 +243,27 @@ public class SQL92 implements Vendor {
 			return quote + pattern.matcher(s).replaceAll("$1$1") + quote;
 		}
 	};
+	
+	/** Pattern doubling quoter for MS Access. Access needs table headers enclosed by [ ] instead of " " or '' 
+	 * Therefore we need different PatternDoublingQuorter declaration, where there exist starting and ending quoter
+	 * 
+	 * 	@author: Anna Dabrowska (anna.dabrowska@deri.org)
+	 * */
+
+	public static class PatternDoublingQuoterforMSAccess implements Quoter {
+		private final Pattern pattern;
+		private final String startingQuote;
+		private final String endingQuote;
+		public PatternDoublingQuoterforMSAccess(Pattern pattern, String startingQuote, String endingQuote) {
+			this.pattern = pattern;
+			this.startingQuote = startingQuote;
+			this.endingQuote = endingQuote;
+		}
+		public String quote(String s) {
+			return startingQuote + pattern.matcher(s).replaceAll("$1$1") + endingQuote;
+		}
+	};
+	
 	/**
 	 * Parser for standard SQL92 identifiers.
 	 */
